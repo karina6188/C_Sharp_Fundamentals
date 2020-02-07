@@ -32,7 +32,12 @@ This is a C# online course hosted by Bob Tabor with Microsoft Developer Universi
 25 Understanding Namespaces and Working with the .NET Class Library  
 
 ## Description
-I will keep a journal for this course to take some key notes from the videos. I will also add some external links and/or create some examples to demonstrate the concepts.
+I will keep a journal for this course to take some key notes from the videos. I will follow the course to build an app and also add some external links and/or create some examples to demonstrate the concepts.  
+
+Link to my wiki journal: https://github.com/karina6188/C_Sharp_Fundamentals/wiki
+
+## Before You Start
+You will need to download Microsoft's Visual Studio to follow along this course. I use Visual Studio Community 2019 and Microsoft's .NET Framework.
 
 ## Resources
 https://channel9.msdn.com/Series/CSharp-Fundamentals-for-Absolute-Beginners
