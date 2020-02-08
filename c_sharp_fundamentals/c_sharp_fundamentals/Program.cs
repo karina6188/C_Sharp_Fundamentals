@@ -18,6 +18,24 @@ namespace c_sharp_fundamentals
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
             Console.WriteLine("Hello World!");
             Console.ReadLine();
+            SayHi();
+        }
+
+        static void SayHi()
+        {
+            Console.WriteLine("Hello, what is your name?");
+            string name = Console.ReadLine();
+            Console.WriteLine($"It's very nice to meet you {name}");
+            Console.WriteLine("Would you like to play a game with me? Y/N");
+            string game = Console.ReadLine().ToLower();
+            if (game == "y")
+            {
+                Console.WriteLine("Yay! Let's play a game");
+            }
+            else
+            {
+                Console.WriteLine("Alright! Maybe next time");
+            }
         }
     }
 }
