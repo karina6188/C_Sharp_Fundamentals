@@ -21,6 +21,12 @@ namespace c_sharp_fundamentals
             SayHi();
         }
 
+        /// <summary>
+        /// This method takes in no parameter and does not return anything
+        /// The method takes in the user's response and lowercases the answer
+        /// If the user types in Y, print to the console "Let's play a game"
+        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time."
+        /// </summary>
         static void SayHi()
         {
             Console.WriteLine("Hello, what is your name?");
