@@ -18,6 +18,7 @@ namespace c_sharp_fundamentals
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
             Console.WriteLine("Hello!");
             SayHi();
+            Age();
         }
 
         /// <summary>
@@ -28,10 +29,10 @@ namespace c_sharp_fundamentals
         /// </summary>
         static bool SayHi()
         {
-            Console.WriteLine("What is your name?");
+            Console.Write("What is your name? ");
             string name = Console.ReadLine();
-            Console.WriteLine($"It's very nice to meet you {name}");
-            Console.WriteLine("Would you like to play a game with me? Y/N");
+            Console.WriteLine($"It's very nice to meet you {name}!");
+            Console.Write("Would you like to play a game with me? Y/N ");
             string game = Console.ReadLine().ToLower();
             if (game == "y")
             {
@@ -68,9 +69,16 @@ namespace c_sharp_fundamentals
                 message = "Sorry you didn't choose a valid option.";
             }
             Console.WriteLine(message);
+            Console.WriteLine();
+        }
+
+        static void Age()
+        {
+            Console.Write("Are you over 21 years old? Y/N ");
+            string age = Console.ReadLine().ToLower();
+            string bar = (age == "y") ? "Would you like to try out a new bar in town?" : "You are not old enough to drink alchohol";
+            Console.WriteLine(bar);
             Console.ReadLine();
-
-
         }
     }
 }
