@@ -16,20 +16,19 @@ namespace c_sharp_fundamentals
         {
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
-            Console.WriteLine("Hello World!");
-            Console.ReadLine();
+            Console.WriteLine("Hello!");
             SayHi();
         }
 
         /// <summary>
-        /// This method takes in no parameter and does not return anything
+        /// This method takes in no parameter and returns a boolean
         /// The method takes in the user's response and lowercases the answer
         /// If the user types in Y, print to the console "Let's play a game"
-        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time."
+        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and returns false to exit the method
         /// </summary>
-        static void SayHi()
+        static bool SayHi()
         {
-            Console.WriteLine("Hello, what is your name?");
+            Console.WriteLine("What is your name?");
             string name = Console.ReadLine();
             Console.WriteLine($"It's very nice to meet you {name}");
             Console.WriteLine("Would you like to play a game with me? Y/N");
@@ -37,11 +36,41 @@ namespace c_sharp_fundamentals
             if (game == "y")
             {
                 Console.WriteLine("Yay! Let's play a game");
+                PlayGame();
+                return true;
             }
             else
             {
                 Console.WriteLine("Alright! Maybe next time");
+                return false;
             }
+        }
+
+        static void PlayGame()
+        {
+            Console.WriteLine("Pick a number 1, 2, or 3");
+            string number = Console.ReadLine();
+            string message = "";
+            if (number == "1")
+            {
+                message = "You won a flight ticket to Tokyo, Japan!";
+            }
+            else if (number == "2")
+            {
+                message = "You won a mountain bike!";
+            }
+            else if (number == "3")
+            {
+                message = "You won a $50 of gift card!";
+            }
+            else
+            {
+                message = "Sorry you didn't choose a valid option.";
+            }
+            Console.WriteLine(message);
+            Console.ReadLine();
+
+
         }
     }
 }
