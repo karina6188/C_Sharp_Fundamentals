@@ -25,7 +25,7 @@ namespace c_sharp_fundamentals
         /// <summary>
         /// This method takes in no parameter and returns a boolean
         /// The method takes in the user's response and lowercases the answer. Therefore, whether the user types a Y or y, they can both be processed as a yes
-        /// If the user types in Y/y, print to the console "Let's play a game"
+        /// If the user types in Y/y, print to the console "Let's play a game" and invoke the PlayGame() method
         /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and returns false to exit the method
         /// </summary>
         static bool SayHi()
@@ -92,6 +92,8 @@ namespace c_sharp_fundamentals
         {
             Console.Write("Are you over 21 years old? Y/N ");
             string age = Console.ReadLine().ToLower();
+            // This line means if age equals to "y", string bar will be assigned to be the first sentence "Would you ....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
+            // ? here means 
             string bar = (age == "y") ? "Would you like to try out a new bar in town?" : "You are not old enough to drink alchohol";
             Console.WriteLine(bar);
             Console.ReadLine();
