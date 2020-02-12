@@ -75,6 +75,7 @@ namespace c_sharp_fundamentals
             {
                 message = "didn't win a prize because it was not a valid option.";
             }
+            // This is a replacement code. {0} and {1} are going to be replaced by the two variables number and message
             Console.WriteLine("You chose {0}, therefore you {1}", number, message);
             Console.WriteLine();
         }
@@ -96,7 +97,7 @@ namespace c_sharp_fundamentals
             // ? here means if this condition is true. If yes, give the first result which is before :
             // If the condition is false, then give the second result which is after :
             // : means or
-            string drive = (age == "y") ? "You are old enough to drive" : "You are not old enough to drive";
+            string drive = (age == "y") ? "You are old enough to drive!" : "You are not old enough to drive.";
             Console.WriteLine(drive);
             Console.ReadLine();
         }
