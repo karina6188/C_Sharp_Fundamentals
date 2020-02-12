@@ -21,10 +21,11 @@ namespace c_sharp_fundamentals
             Age();
         }
 
+        #region SayHi()
         /// <summary>
         /// This method takes in no parameter and returns a boolean
-        /// The method takes in the user's response and lowercases the answer
-        /// If the user types in Y, print to the console "Let's play a game"
+        /// The method takes in the user's response and lowercases the answer. Therefore, whether the user types a Y or y, they can both be processed as a yes
+        /// If the user types in Y/y, print to the console "Let's play a game"
         /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and returns false to exit the method
         /// </summary>
         static bool SayHi()
@@ -46,7 +47,13 @@ namespace c_sharp_fundamentals
                 return false;
             }
         }
+        #endregion
 
+        #region PlayGame()
+        /// <summary>
+        /// This method takes in no parameter and returns nothing
+        /// The method use if statements to respond to the user with different console messages based on the selection the user makes
+        /// </summary>
         static void PlayGame()
         {
             Console.WriteLine("Pick a number 1, 2, or 3");
@@ -71,7 +78,16 @@ namespace c_sharp_fundamentals
             Console.WriteLine(message);
             Console.WriteLine();
         }
+        #endregion
 
+        #region Age()
+        /// <summary>
+        /// This method takes in no parameter and returns nothing
+        /// Similar to the if statements from the previous method PlayGame()
+        /// This Age() method gives the user different console message based on the user's selection
+        /// In this case, only two options for the user to choose. The condition is either true or false.
+        /// So we use ?: this is called ternary conditional operator to evaluate a boolean expression and returns the result of one of the expressions
+        /// </summary>
         static void Age()
         {
             Console.Write("Are you over 21 years old? Y/N ");
@@ -80,5 +96,6 @@ namespace c_sharp_fundamentals
             Console.WriteLine(bar);
             Console.ReadLine();
         }
+        #endregion
     }
 }
