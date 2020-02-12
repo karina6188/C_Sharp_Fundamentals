@@ -61,21 +61,21 @@ namespace c_sharp_fundamentals
             string message = "";
             if (number == "1")
             {
-                message = "You won a flight ticket to Tokyo, Japan!";
+                message = "won a flight ticket to Tokyo, Japan!";
             }
             else if (number == "2")
             {
-                message = "You won a mountain bike!";
+                message = "won a mountain bike!";
             }
             else if (number == "3")
             {
-                message = "You won a $50 of gift card!";
+                message = "won a $50 of gift card!";
             }
             else
             {
-                message = "Sorry you didn't choose a valid option.";
+                message = "didn't win a prize because it was not a valid option.";
             }
-            Console.WriteLine(message);
+            Console.WriteLine("You chose {0}, therefore you {1}", number, message);
             Console.WriteLine();
         }
         #endregion
@@ -90,14 +90,14 @@ namespace c_sharp_fundamentals
         /// </summary>
         static void Age()
         {
-            Console.Write("Are you over 21 years old? Y/N ");
+            Console.Write("Are you over 16 years old? Y/N ");
             string age = Console.ReadLine().ToLower();
-            // This line means if age equals to "y", string bar will be assigned to be the first sentence "Would you ....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
+            // This line means if age equals to "y", string bar will be assigned to be the first sentence "You are old enough....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
             // ? here means if this condition is true. If yes, give the first result which is before :
             // If the condition is false, then give the second result which is after :
             // : means or
-            string bar = (age == "y") ? "Would you like to try out a new bar in town?" : "You are not old enough to drink alchohol";
-            Console.WriteLine(bar);
+            string drive = (age == "y") ? "You are old enough to drive" : "You are not old enough to drive";
+            Console.WriteLine(drive);
             Console.ReadLine();
         }
         #endregion
