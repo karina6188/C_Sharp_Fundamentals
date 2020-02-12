@@ -93,7 +93,9 @@ namespace c_sharp_fundamentals
             Console.Write("Are you over 21 years old? Y/N ");
             string age = Console.ReadLine().ToLower();
             // This line means if age equals to "y", string bar will be assigned to be the first sentence "Would you ....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
-            // ? here means 
+            // ? here means if this condition is true. If yes, give the first result which is before :
+            // If the condition is false, then give the second result which is after :
+            // : means or
             string bar = (age == "y") ? "Would you like to try out a new bar in town?" : "You are not old enough to drink alchohol";
             Console.WriteLine(bar);
             Console.ReadLine();
