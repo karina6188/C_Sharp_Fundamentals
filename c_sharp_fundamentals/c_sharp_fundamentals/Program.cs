@@ -119,13 +119,17 @@ namespace c_sharp_fundamentals
         /// <param name="number">A string to indicate if the user enters an invalid number or the result of the user's lucky number</param>
         static string DataType(int number)
         {
+            // The symbol || here means OR
             if (number < 1 || number > 100)
             {
                 return "You did not enter an integer from 1 to 100";
             }
             else
             {
+                // The symbol % here is called modulus operator. It means to find the remainder after dividing the first operand by the second
+                // The + symbol here is to add the variable number's value and 5 together. This + symbol is algorithmitic symbol
                 int luckyNumber = (number + 5) * 3 % 17;
+                // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/algorithmitic symbol
                 return "Your lucky number is" + number + "!";
             }
         }
