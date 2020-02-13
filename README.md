@@ -3,6 +3,8 @@
 ## About This Program
 This is a C# online course hosted by Bob Tabor with Microsoft Developer University. I use this course to review my fundamental knowledge on C# and advance my coding skills. I think it is a good idea to go back to the fundamental concepts and learn it again. As the second time, I can pick some topics that I want to watch and I can learn it more thoroughly to reinforce my knowledge. This course contains 25 episodes and it teaches you all the fundamentals of C# and how to use the tools to write codes.
 
+Link to my wiki for key notes from each episode: https://github.com/karina6188/C_Sharp_Fundamentals/wiki
+
 ## Table of Contents
 ### Courses:
 01 Course Introduction  
