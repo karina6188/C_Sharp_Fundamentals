@@ -108,7 +108,6 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-
         #region DataType()
         /// <summary>
         /// This method takes in an integer number and use a if statement to check if the number is between 1 to 100
