@@ -19,11 +19,11 @@ namespace c_sharp_fundamentals
             Console.WriteLine("Hello!");
             SayHi();
             Age();
-            Console.WriteLine("Enter your favorite number between 1 to 100");
+            Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
             // Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
             // because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
             int number = Convert.ToInt32(Console.ReadLine());
-            DataType(number);
+            Console.WriteLine(DataType(number));
         }
 
         #region SayHi()
@@ -111,13 +111,23 @@ namespace c_sharp_fundamentals
 
         #region DataType()
         /// <summary>
-        /// 
+        /// This method takes in an integer number and use a if statement to check if the number is between 1 to 100
+        /// The if statement checks two conditions. If either one of the condition is true, run the code inside the if statement
+        /// If the number is neither less than 1 or greater than 100, run the code inside else statement
+        /// The method returns a string that is to be printed out to the console
         /// </summary>
-        /// <param name="number"></param>
-        static void DataType(int number)
+        /// <param name="number">A string to indicate if the user enters an invalid number or the result of the user's lucky number</param>
+        static string DataType(int number)
         {
-            int luckyNumber = (number + 5) * 3 % 17;
-            Console.WriteLine("Your lucky number is" + number + "!");
+            if (number < 1 || number > 100)
+            {
+                return "You did not enter an integer from 1 to 100";
+            }
+            else
+            {
+                int luckyNumber = (number + 5) * 3 % 17;
+                return "Your lucky number is" + number + "!";
+            }
         }
         #endregion
     }
