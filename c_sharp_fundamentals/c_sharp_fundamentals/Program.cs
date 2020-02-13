@@ -118,7 +118,8 @@ namespace c_sharp_fundamentals
         /// <param name="number">A string to indicate if the user enters an invalid number or the result of the user's lucky number</param>
         static string DataType(int number)
         {
-            // The symbol || here means OR
+            // The symbol || here is called a conditional logical OR operator
+            // This evaluates the first condition. If the first condition is true, then it skips the rest operands. If the first condition is false, only then it checks the second operand.
             if (number < 1 || number > 100)
             {
                 return "You did not enter an integer from 1 to 100";
@@ -126,9 +127,10 @@ namespace c_sharp_fundamentals
             else
             {
                 // The symbol % here is called modulus operator. It means to find the remainder after dividing the first operand by the second
-                // The + symbol here is to add the variable number's value and 5 together. This + symbol is algorithmitic symbol
+                // The + symbol here is to add the variable number's value and 5 together. This + symbol is a arithmetic operator
                 int luckyNumber = (number + 5) * 3 % 17;
-                // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/algorithmitic symbol
+                // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/arithmetic symbol
+                // Another way to concatenate this is to use string interpolation. It will be written like this: return $"Your lucky number is {number}!";
                 return "Your lucky number is" + number + "!";
             }
         }
