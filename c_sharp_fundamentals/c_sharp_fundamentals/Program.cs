@@ -97,7 +97,7 @@ namespace c_sharp_fundamentals
             // ? here means if this condition is true. If yes, give the first result which is before :
             // If the condition is false, then give the second result which is after :
             // : means or
-            string drive = (age == "y") ? "You are old enough to drive!" : "You are not old enough to drive.";
+            string drive = (age == "y") ? "You are old enough to drive!" : "You cannot drive at this age.";
             Console.WriteLine(drive);
             Console.ReadLine();
         }
