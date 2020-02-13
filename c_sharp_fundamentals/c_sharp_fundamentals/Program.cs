@@ -19,6 +19,11 @@ namespace c_sharp_fundamentals
             Console.WriteLine("Hello!");
             SayHi();
             Age();
+            Console.WriteLine("Enter your favorite number between 1 to 100");
+            // Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
+            // because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
+            int number = Convert.ToInt32(Console.ReadLine());
+            DataType(number);
         }
 
         #region SayHi()
@@ -100,6 +105,19 @@ namespace c_sharp_fundamentals
             string drive = (age == "y") ? "You are old enough to drive!" : "You cannot drive at this age.";
             Console.WriteLine(drive);
             Console.ReadLine();
+        }
+        #endregion
+
+
+        #region DataType()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number"></param>
+        static void DataType(int number)
+        {
+            int luckyNumber = (number + 5) * 3 % 17;
+            Console.WriteLine("Your lucky number is" + number + "!");
         }
         #endregion
     }
