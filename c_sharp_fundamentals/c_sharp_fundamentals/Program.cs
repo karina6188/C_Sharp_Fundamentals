@@ -17,13 +17,14 @@ namespace c_sharp_fundamentals
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
             Console.WriteLine("Hello!");
-            SayHi();
-            Age();
+            //SayHi();
+            //Age();
             Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
             // Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
             // because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
             int number = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(DataType(number));
+            Console.WriteLine(DataType(number));            
+            ForIteration(number);
         }
 
         #region SayHi()
@@ -128,10 +129,29 @@ namespace c_sharp_fundamentals
             {
                 // The symbol % here is called modulus operator. It means to find the remainder after dividing the first operand by the second
                 // The + symbol here is to add the variable number's value and 5 together. This + symbol is a arithmetic operator
-                int luckyNumber = (number + 5) * 3 % 17;
+                int luckyNumber = (number + 11) * 7 % 9;
                 // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/arithmetic symbol
                 // Another way to concatenate this is to use string interpolation. It will be written like this: return $"Your lucky number is {number}!";
-                return "Your lucky number is" + number + "!";
+                return "Your lucky number is " + luckyNumber + "!";
+            }
+        }
+        #endregion
+
+        #region ForIteration()
+        /// <summary>
+        /// Practice for loop. This method takes in a parameter of a double data type
+        /// Then the for loop iterates for 5 times starting from 0 until it reaches to 4
+        /// Use built-in method Math.Pow to power the number i times
+        /// Each time the for loop iterates, i changes, therefore the number changes to the i-th power
+        /// Print the result to the console
+        /// </summary>
+        /// <param name="number"></param>
+        static void ForIteration(double number)
+        {
+            for (double i = 0; i < 5; i++)
+            {
+                double changingNumber = Math.Pow(number, i);
+                Console.WriteLine(changingNumber);
             }
         }
         #endregion
