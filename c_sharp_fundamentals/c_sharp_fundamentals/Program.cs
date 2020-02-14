@@ -138,6 +138,14 @@ namespace c_sharp_fundamentals
         #endregion
 
         #region ForIteration()
+        /// <summary>
+        /// Practice for loop. This method takes in a parameter of a double data type
+        /// Then the for loop iterates for 5 times starting from 0 until it reaches to 4
+        /// Use built-in method Math.Pow to power the number i times
+        /// Each time the for loop iterates, i changes, therefore the number changes to the i-th power
+        /// Print the result to the console
+        /// </summary>
+        /// <param name="number"></param>
         static void ForIteration(double number)
         {
             for (double i = 0; i < 5; i++)
