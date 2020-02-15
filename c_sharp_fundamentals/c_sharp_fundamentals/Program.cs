@@ -153,6 +153,11 @@ namespace c_sharp_fundamentals
                 double changingNumber = Math.Pow(number, i);
                 Console.WriteLine(changingNumber);
             }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(number + i);
+            }
         }
         #endregion
     }
