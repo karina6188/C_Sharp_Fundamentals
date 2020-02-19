@@ -167,26 +167,40 @@ namespace c_sharp_fundamentals
         #region
         static void Arrays()
         {
-            Console.WriteLine("Please choose a sentence below to reverse it");
-            string sentence1 = "";
-            string sentence2 = "";
-            string sentence3 = "";
+            Console.WriteLine("Please choose a sentence below to reverse it.");
+            string sentence1 = "Great minds discuss ideas; average minds discuss events; small minds discuss people.";
+            string sentence2 = "It is hard to fail, but it is worse never to have tried to succeed.";
+            string sentence3 = "It is our choices, that show what we truly are, far more than our abilities.";
             Console.WriteLine($"1) {sentence1}");
             Console.WriteLine($"2) {sentence2}");
             Console.WriteLine($"3) {sentence3}");
             string selection = Console.ReadLine();
-            switch (selection)
+            char[] sentenceChar = new char[] { };
+            if (selection != "1" && selection != "2" && selection != "3")
             {
-                case "1":
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                default:
-                    Console.WriteLine("You did not enter a valid number");
-                    break;
+                Console.WriteLine("You did not enter a valid number");
             }
+            else
+            {
+                switch (selection)
+                {
+                    case "1":
+                        sentenceChar = sentence1.ToCharArray();
+                        break;
+                    case "2":
+                        sentenceChar = sentence2.ToCharArray();
+                        break;
+                    case "3":
+                        sentenceChar = sentence3.ToCharArray();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Array.Reverse(sentenceChar);
+            Console.WriteLine("Reversed sentence:");
+            Console.Write(sentenceChar);
+            Console.WriteLine();
         }
         #endregion
     }
