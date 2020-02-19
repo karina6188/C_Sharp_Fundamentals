@@ -25,7 +25,8 @@ namespace c_sharp_fundamentals
             //int number = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine(DataType(number));            
             //ForIteration(number);
-            Arrays();
+            //Arrays();
+            ArraySize();
         }
 
         #region SayHi()
@@ -214,6 +215,23 @@ namespace c_sharp_fundamentals
             Console.Write(sentenceChar);
             Console.WriteLine();
         }
-        #endregion
+
+        //Array with size specified and without size specified
+        static void ArraySize()
+        {
+            int[] array1 = new int[5];
+            int[] array2 = new int[] { 5, 10, 15, 20 };
+            int[] array3 = { 1, 3, 5, 7, 9, 11, 13 };
+
+            Console.WriteLine(array1.Length);
+            array2 = new int[] { 0, 5, 10, 15, 20, 25 };
+            foreach (int number in array2)
+            {
+                Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+            Console.WriteLine(array3.Length);
+        }
     }
+        #endregion
 }
