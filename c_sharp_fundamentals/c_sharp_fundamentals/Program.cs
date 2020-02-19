@@ -19,12 +19,13 @@ namespace c_sharp_fundamentals
             Console.WriteLine("Hello!");
             //SayHi();
             //Age();
-            Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
-            // Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
-            // because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
-            int number = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(DataType(number));            
-            ForIteration(number);
+            //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
+            //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
+            //// because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
+            //int number = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine(DataType(number));            
+            //ForIteration(number);
+            Arrays();
         }
 
         #region SayHi()
@@ -154,16 +155,60 @@ namespace c_sharp_fundamentals
                 Console.WriteLine(changingNumber);
             }
 
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(number + i);
-            }
-
+            Console.WriteLine("Print out 6 random numbers:");
             int[] numbers = new int[] { 52, 87, 6, 23, 19, 67};
             foreach (int numeric in numbers)
             {
                 Console.WriteLine(numeric);
             }
+        }
+        #endregion
+
+        #region
+        /// <summary>
+        /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
+        /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
+        /// Use switch statement to process the codes based on the user's selection.
+        /// If the user selects either 1, 2, or 3, take the sentence and use built-in method ToCharArray() to convert the string sentence to an array of characters.
+        /// Then store the characters into a char array. Use the built-in method Array.Reverse() to reverse the array.
+        /// Print the characters in the array to the console in the same line to show the reversed sentence.
+        /// </summary>
+        static void Arrays()
+        {
+            Console.WriteLine("Please choose a sentence below to reverse it.");
+            string sentence1 = "Great minds discuss ideas; average minds discuss events; small minds discuss people.";
+            string sentence2 = "It is hard to fail, but it is worse never to have tried to succeed.";
+            string sentence3 = "It is our choices, that show what we truly are, far more than our abilities.";
+            Console.WriteLine($"1) {sentence1}");
+            Console.WriteLine($"2) {sentence2}");
+            Console.WriteLine($"3) {sentence3}");
+            string selection = Console.ReadLine();
+            char[] sentenceChar = new char[] { };
+            if (selection != "1" && selection != "2" && selection != "3")
+            {
+                Console.WriteLine("You did not enter a valid number");
+            }
+            else
+            {
+                switch (selection)
+                {
+                    case "1":
+                        sentenceChar = sentence1.ToCharArray();
+                        break;
+                    case "2":
+                        sentenceChar = sentence2.ToCharArray();
+                        break;
+                    case "3":
+                        sentenceChar = sentence3.ToCharArray();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Array.Reverse(sentenceChar);
+            Console.WriteLine("Reversed sentence:");
+            Console.Write(sentenceChar);
+            Console.WriteLine();
         }
         #endregion
     }
