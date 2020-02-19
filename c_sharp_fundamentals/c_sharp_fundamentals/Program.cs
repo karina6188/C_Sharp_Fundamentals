@@ -158,6 +158,12 @@ namespace c_sharp_fundamentals
             {
                 Console.WriteLine(number + i);
             }
+
+            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67};
+            foreach (int numeric in numbers)
+            {
+                Console.WriteLine(numeric);
+            }
         }
         #endregion
     }
