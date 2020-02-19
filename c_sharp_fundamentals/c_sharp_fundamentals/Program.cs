@@ -19,12 +19,13 @@ namespace c_sharp_fundamentals
             Console.WriteLine("Hello!");
             //SayHi();
             //Age();
-            Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
-            // Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
-            // because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
-            int number = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(DataType(number));            
-            ForIteration(number);
+            //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
+            //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
+            //// because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
+            //int number = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine(DataType(number));            
+            //ForIteration(number);
+            Arrays();
         }
 
         #region SayHi()
@@ -154,15 +155,37 @@ namespace c_sharp_fundamentals
                 Console.WriteLine(changingNumber);
             }
 
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(number + i);
-            }
-
+            Console.WriteLine("Print out 6 random numbers:");
             int[] numbers = new int[] { 52, 87, 6, 23, 19, 67};
             foreach (int numeric in numbers)
             {
                 Console.WriteLine(numeric);
+            }
+        }
+        #endregion
+
+        #region
+        static void Arrays()
+        {
+            Console.WriteLine("Please choose a sentence below to reverse it");
+            string sentence1 = "";
+            string sentence2 = "";
+            string sentence3 = "";
+            Console.WriteLine($"1) {sentence1}");
+            Console.WriteLine($"2) {sentence2}");
+            Console.WriteLine($"3) {sentence3}");
+            string selection = Console.ReadLine();
+            switch (selection)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                default:
+                    Console.WriteLine("You did not enter a valid number");
+                    break;
             }
         }
         #endregion
