@@ -165,6 +165,14 @@ namespace c_sharp_fundamentals
         #endregion
 
         #region
+        /// <summary>
+        /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
+        /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
+        /// Use switch statement to process the codes based on the user's selection.
+        /// If the user selects either 1, 2, or 3, take the sentence and use built-in method ToCharArray() to convert the string sentence to an array of characters.
+        /// Then store the characters into a char array. Use the built-in method Array.Reverse() to reverse the array.
+        /// Print the characters in the array to the console in the same line to show the reversed sentence.
+        /// </summary>
         static void Arrays()
         {
             Console.WriteLine("Please choose a sentence below to reverse it.");
