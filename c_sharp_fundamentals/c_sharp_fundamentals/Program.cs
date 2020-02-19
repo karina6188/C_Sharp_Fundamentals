@@ -184,6 +184,10 @@ namespace c_sharp_fundamentals
             Console.WriteLine($"3) {sentence3}");
             string selection = Console.ReadLine();
             char[] sentenceChar = new char[] { };
+            // The logic here is if selection is not "1" and not "2" and not "3", run the code
+            // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
+            // This does not work because if the user selects "1", it satisfy the two other conditions selection is not "2" or not "3", the code will run
+            // You want to run the code only when the selection is not "1" and not "2" and not "3"
             if (selection != "1" && selection != "2" && selection != "3")
             {
                 Console.WriteLine("You did not enter a valid number");
