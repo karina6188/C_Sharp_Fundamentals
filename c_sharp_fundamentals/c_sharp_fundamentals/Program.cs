@@ -217,11 +217,15 @@ namespace c_sharp_fundamentals
         }
 
         //Array with size specified and without size specified
+        /// <summary>
+        /// Pracitce pre-defined array methods including .Length, Array.Reverse(), and Array.Sort()
+        /// </summary>
         static void ArraySize()
         {
             int[] array1 = new int[5];
             int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
             int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
+            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva"};
             // assign array1 index position 0 to be value of integer 1
             array1[0] = 1;
             // assign array1 index position 1 to be value of integer 2
@@ -256,6 +260,42 @@ namespace c_sharp_fundamentals
             foreach (int number in array3)
             {
                 Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+
+            Console.WriteLine($"Array4's length: {array4.Length}");
+            Console.WriteLine($"Array4's values:");
+            foreach (string name in array4)
+            {
+                Console.Write($"{name} -> ");
+            }
+            Console.WriteLine("x");
+
+            Array.Sort(array4);
+            Console.WriteLine($"Sorted Array4's values:");
+            foreach (string name in array4)
+            {
+                Console.Write($"{name} -> ");
+            }
+            Console.WriteLine("x");
+        }
+
+        // Use foreach to print out values from an int array
+        static void PrintIntArray(int[] intArray)
+        {
+            foreach (int value in intArray)
+            {
+                Console.Write($"{value} -> ");
+            }
+            Console.WriteLine("x");
+        }
+
+        // Use foreach to print out values from an string array
+        static void PrintStringArray(string[] stringArray)
+        {
+            foreach (string value in stringArray)
+            {
+                Console.Write($"{value} -> ");
             }
             Console.WriteLine("x");
         }
