@@ -25,7 +25,8 @@ namespace c_sharp_fundamentals
             //int number = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine(DataType(number));            
             //ForIteration(number);
-            Arrays();
+            //Arrays();
+            ArraySize();
         }
 
         #region SayHi()
@@ -214,6 +215,48 @@ namespace c_sharp_fundamentals
             Console.Write(sentenceChar);
             Console.WriteLine();
         }
-        #endregion
+
+        //Array with size specified and without size specified
+        static void ArraySize()
+        {
+            int[] array1 = new int[5];
+            int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
+            int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
+            array1[0] = 1;
+            array1[1] = 2;
+            Console.WriteLine($"Array1's length: {array1.Length}");
+            Console.WriteLine($"Array1's values:");
+            foreach (int number in array1)
+            {
+                Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+
+            Console.WriteLine($"Array2's length: {array2.Length}");
+            Console.WriteLine($"Array2's values:");
+            foreach (int number in array2)
+            {
+                Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+
+            Console.WriteLine($"Array3's length: {array3.Length}");
+            Console.WriteLine($"Array3's values:");
+            foreach (int number in array3)
+            {
+                Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+
+            Array.Sort(array3);
+
+            Console.WriteLine($"Sorted Array3's values:");
+            foreach (int number in array3)
+            {
+                Console.Write($"{number} -> ");
+            }
+            Console.WriteLine("x");
+        }
     }
+        #endregion
 }
