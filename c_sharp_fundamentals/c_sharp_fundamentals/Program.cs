@@ -217,45 +217,59 @@ namespace c_sharp_fundamentals
         }
 
         //Array with size specified and without size specified
+        /// <summary>
+        /// Pracitce pre-defined array methods including .Length, Array.Reverse(), and Array.Sort()
+        /// </summary>
         static void ArraySize()
         {
             int[] array1 = new int[5];
             int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
             int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
+            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva", "Andy", "Lily", "Jason", "Anderson", "Nicole"};
+            // assign array1 index position 0 to be value of integer 1
             array1[0] = 1;
+            // assign array1 index position 1 to be value of integer 2
             array1[1] = 2;
             Console.WriteLine($"Array1's length: {array1.Length}");
-            Console.WriteLine($"Array1's values:");
-            foreach (int number in array1)
-            {
-                Console.Write($"{number} -> ");
-            }
-            Console.WriteLine("x");
+            PrintIntArray(array1);
 
             Console.WriteLine($"Array2's length: {array2.Length}");
-            Console.WriteLine($"Array2's values:");
-            foreach (int number in array2)
-            {
-                Console.Write($"{number} -> ");
-            }
-            Console.WriteLine("x");
+            PrintIntArray(array2);
 
             Console.WriteLine($"Array3's length: {array3.Length}");
-            Console.WriteLine($"Array3's values:");
-            foreach (int number in array3)
-            {
-                Console.Write($"{number} -> ");
-            }
-            Console.WriteLine("x");
+            PrintIntArray(array3);
 
             Array.Sort(array3);
+            PrintIntArray(array3);
 
-            Console.WriteLine($"Sorted Array3's values:");
-            foreach (int number in array3)
+            Console.WriteLine($"Array4's length: {array4.Length}");
+            PrintStringArray(array4);
+
+            Array.Sort(array4);
+            PrintStringArray(array4);
+        }
+
+        // Use foreach to print out values from an int array
+        static void PrintIntArray(int[] intArray)
+        {
+            Console.WriteLine("Array values:");
+            foreach (int value in intArray)
             {
-                Console.Write($"{number} -> ");
+                Console.Write($"{value} -> ");
             }
             Console.WriteLine("x");
+            Console.WriteLine();
+        }
+
+        // Use foreach to print out values from an string array
+        static void PrintStringArray(string[] stringArray)
+        {
+            foreach (string value in stringArray)
+            {
+                Console.Write($"{value} -> ");
+            }
+            Console.WriteLine("x");
+            Console.WriteLine();
         }
     }
         #endregion
