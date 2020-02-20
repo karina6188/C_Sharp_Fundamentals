@@ -222,7 +222,9 @@ namespace c_sharp_fundamentals
             int[] array1 = new int[5];
             int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
             int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
+            // assign array1 index position 0 to be value of integer 1
             array1[0] = 1;
+            // assign array1 index position 1 to be value of integer 2
             array1[1] = 2;
             Console.WriteLine($"Array1's length: {array1.Length}");
             Console.WriteLine($"Array1's values:");
