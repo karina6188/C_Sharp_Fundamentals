@@ -17,15 +17,12 @@ namespace c_sharp_fundamentals
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
 
-            SayHi();
-
+            string name = SayHi();
             Age();
 
-            //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
-            //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
-            //// because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
-            //int number = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine(DataType(number));            
+            Console.Write("Enter your birthday MM/DD: ");
+            Birthday(Console.ReadLine());
+            
             //ForIteration(number);
             //Arrays();
             //ArraySize();
@@ -100,31 +97,18 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region DataType()
-        /// <summary>
-        /// This method takes in an integer number and use a if statement to check if the number is between 1 to 100
-        /// The if statement checks two conditions. If either one of the condition is true, run the code inside the if statement
-        /// If the number is neither less than 1 or greater than 100, run the code inside else statement
-        /// The method returns a string that is to be printed out to the console
-        /// </summary>
-        /// <param name="number">A string to indicate if the user enters an invalid number or the result of the user's lucky number</param>
-        static string DataType(int number)
+        #region Birthday()
+
+        static void Birthday(string birthday)
         {
-            // The symbol || here is called a conditional logical OR operator
-            // This evaluates the first condition. If the first condition is true, then it skips the rest operands. If the first condition is false, only then it checks the second operand.
-            if (number < 1 || number > 100)
+            try
             {
-                return "You did not enter an integer from 1 to 100";
+                int birthdayDays = Convert.ToInt32(birthday);
             }
-            else
+            catch
             {
-                // The symbol % here is called modulus operator. It means to find the remainder after dividing the first operand by the second
-                // The + symbol here is to add the variable number's value and 5 together. This + symbol is a arithmetic operator
-                int luckyNumber = (number + 11) * 7 % 9;
-                // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/arithmetic symbol
-                // Another way to concatenate this is to use string interpolation. It will be written like this: return $"Your lucky number is {number}!";
-                return "Your lucky number is " + luckyNumber + "!";
-            }
+
+            };
         }
         #endregion
 
