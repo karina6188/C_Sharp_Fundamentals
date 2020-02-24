@@ -18,7 +18,9 @@ namespace c_sharp_fundamentals
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
 
             SayHi();
-            //Age();
+
+            Age();
+
             //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
             //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
             //// because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
@@ -45,7 +47,7 @@ namespace c_sharp_fundamentals
         /// If the user types in Y/y, print to the console "Let's play a game" and invoke the PlayGame() method
         /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and exit the method
         /// </summary>
-        static void SayHi()
+        static string SayHi()
         {
             Console.Write("What is your name? ");
             string name = Console.ReadLine();
@@ -55,6 +57,7 @@ namespace c_sharp_fundamentals
             string message = game == "y"? $"Your name is {name}, therefore your unique number is {UniqueNumber(name)}":"Alright! Maybe next time.";
             Console.WriteLine(message);
             Console.ReadLine();
+            return name;
         }
         #endregion
 
@@ -78,21 +81,21 @@ namespace c_sharp_fundamentals
         #region Age()
         /// <summary>
         /// This method takes in no parameter and returns nothing
-        /// Similar to the if statements from the previous method PlayGame()
-        /// This Age() method gives the user different console message based on the user's selection
-        /// In this case, only two options for the user to choose. The condition is either true or false.
-        /// So we use ?: this is called ternary conditional operator to evaluate a boolean expression and returns the result of one of the expressions
+        /// It asks the user to enter his/her age and print to the console how many months and how many days they have lived.
+        /// To prevent the user enters an incorrect data type, use try and catch clause to avoid the program from breaking
         /// </summary>
         static void Age()
         {
-            Console.Write("Are you over 16 years old? Y/N ");
-            string age = Console.ReadLine().ToLower();
-            // This line means if age equals to "y", string bar will be assigned to be the first sentence "You are old enough....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
-            // ? here means if this condition is true. If yes, give the first result which is before :
-            // If the condition is false, then give the second result which is after :
-            // : means or
-            string drive = (age == "y") ? "You are old enough to drive!" : "You cannot drive at this age.";
-            Console.WriteLine(drive);
+            Console.Write("Enter your age: ");
+            try
+            {
+                int age = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"You have lived {age * 12} months or {age * 365} days!");
+            }
+            catch
+            {
+                Console.WriteLine("You did not enter a valid answer.");
+            };
             Console.ReadLine();
         }
         #endregion
