@@ -16,8 +16,8 @@ namespace c_sharp_fundamentals
         {
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
-            Console.WriteLine("Hello!");
-            //SayHi();
+
+            SayHi();
             //Age();
             //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
             //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
@@ -27,15 +27,15 @@ namespace c_sharp_fundamentals
             //ForIteration(number);
             //Arrays();
             //ArraySize();
-            Console.WriteLine("Enter two numbers. One at a time.");
-            Console.WriteLine("Enter the first number:");
-            int num1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the second number:");
-            int num2 = Convert.ToInt32(Console.ReadLine());
-            int sum = AddNumbers(num1, num2);
-            Console.WriteLine("Enter a last number.");
-            int num3 = Convert.ToInt32(Console.ReadLine()); 
-            int multiplication = MultiplyNumbers(sum, num3);
+            //Console.WriteLine("Enter two numbers. One at a time.");
+            //Console.WriteLine("Enter the first number:");
+            //int num1 = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Enter the second number:");
+            //int num2 = Convert.ToInt32(Console.ReadLine());
+            //int sum = AddNumbers(num1, num2);
+            //Console.WriteLine("Enter a last number.");
+            //int num3 = Convert.ToInt32(Console.ReadLine()); 
+            //int multiplication = MultiplyNumbers(sum, num3);
         }
 
         #region SayHi()
@@ -43,58 +43,35 @@ namespace c_sharp_fundamentals
         /// This method takes in no parameter and returns a boolean
         /// The method takes in the user's response and lowercases the answer. Therefore, whether the user types a Y or y, they can both be processed as a yes
         /// If the user types in Y/y, print to the console "Let's play a game" and invoke the PlayGame() method
-        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and returns false to exit the method
+        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and exit the method
         /// </summary>
-        static bool SayHi()
+        static void SayHi()
         {
             Console.Write("What is your name? ");
             string name = Console.ReadLine();
-            Console.WriteLine($"It's very nice to meet you {name}!");
-            Console.Write("Would you like to play a game with me? Y/N ");
+            Console.WriteLine($"It's very nice to meet you {name}!\n");
+            Console.Write("Would you like to know your unique number based on your name (Y/N)?  ");
             string game = Console.ReadLine().ToLower();
-            if (game == "y")
-            {
-                Console.WriteLine("Yay! Let's play a game");
-                PlayGame();
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Alright! Maybe next time");
-                return false;
-            }
+            string message = game == "y"? $"Your name is {name}, therefore your unique number is {UniqueNumber(name)}":"Alright! Maybe next time.";
+            Console.WriteLine(message);
+            Console.ReadLine();
         }
         #endregion
 
-        #region PlayGame()
+        #region UniqueNumber()
         /// <summary>
-        /// This method takes in no parameter and returns nothing
-        /// The method use if statements to respond to the user with different console messages based on the selection the user makes
+        /// This method takes in a string returns an integer
+        /// The method gets the ASCII numbers of each character in name and add all the numbers together as the unique number
         /// </summary>
-        static void PlayGame()
+        static int UniqueNumber(string name)
         {
-            Console.WriteLine("Pick a number 1, 2, or 3");
-            string number = Console.ReadLine();
-            string message = "";
-            if (number == "1")
+            char[] nameCharacters = name.ToCharArray();
+            int uniqueNumber = 0;
+            foreach (char character in nameCharacters)
             {
-                message = "won a flight ticket to Tokyo, Japan!";
+                uniqueNumber += char.ToUpper(character); // Use char.ToUpper to get each character's ASCII code
             }
-            else if (number == "2")
-            {
-                message = "won a mountain bike!";
-            }
-            else if (number == "3")
-            {
-                message = "won a $50 of gift card!";
-            }
-            else
-            {
-                message = "didn't win a prize because it was not a valid option.";
-            }
-            // This is a replacement code. {0} and {1} are going to be replaced by the two variables number and message
-            Console.WriteLine("You chose {0}, therefore you {1}", number, message);
-            Console.WriteLine();
+            return uniqueNumber;
         }
         #endregion
 
