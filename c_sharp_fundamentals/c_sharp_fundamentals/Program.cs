@@ -26,7 +26,8 @@ namespace c_sharp_fundamentals
             //Console.WriteLine(DataType(number));            
             //ForIteration(number);
             //Arrays();
-            ArraySize();
+            //ArraySize();
+            AddNumbers(5, 4);
         }
 
         #region SayHi()
@@ -276,10 +277,18 @@ namespace c_sharp_fundamentals
 
         #endregion
 
-        #region Method()
-        static void Method(string name)
+        #region AddNumbers()
+        /// <summary>
+        /// This method takes in two numbers (int) and returns the sum (int) of the two numbers
+        /// </summary>
+        /// <param name="num1">The first number you want to add together</param>
+        /// <param name="num2">The second number you want to add together</param>
+        /// <returns>The sum of the two numbers</returns>
+        static int AddNumbers(int num1, int num2)
         {
-
+            int sum = num1 + num2;
+            Console.WriteLine($"The sum of {num1} and {num2} is {sum}");
+            return sum;
         }
         #endregion
     }
