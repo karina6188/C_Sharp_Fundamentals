@@ -28,7 +28,9 @@ namespace c_sharp_fundamentals
             //Arrays();
             //ArraySize();
             Console.WriteLine("Enter two numbers. One at a time.");
+            Console.WriteLine("Enter the first number:");
             int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the second number:");
             int num2 = Convert.ToInt32(Console.ReadLine());
             int sum = AddNumbers(num1, num2);
             Console.WriteLine("Enter a last number.");
@@ -299,9 +301,17 @@ namespace c_sharp_fundamentals
         #endregion
 
         #region MultiplyNumbers()
+        /// <summary>
+        /// This method takes in two numbers (int) and returns the multiplication (int) of the two numbers
+        /// </summary>
+        /// <param name="num1">The first number you want to multiply together</param>
+        /// <param name="num2">The second number you want to multiply together</param>
+        /// <returns>The multiplication of the two numbers</returns>
         static int MultiplyNumbers(int num1, int num2)
         {
-
+            int sum = num1 * num2;
+            Console.WriteLine($"The multiplication of {num1} and {num2} is {sum}");
+            return sum;
         }
         #endregion
     }
