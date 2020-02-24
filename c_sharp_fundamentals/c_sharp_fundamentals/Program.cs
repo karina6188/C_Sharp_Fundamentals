@@ -26,7 +26,16 @@ namespace c_sharp_fundamentals
             //Console.WriteLine(DataType(number));            
             //ForIteration(number);
             //Arrays();
-            ArraySize();
+            //ArraySize();
+            Console.WriteLine("Enter two numbers. One at a time.");
+            Console.WriteLine("Enter the first number:");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the second number:");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            int sum = AddNumbers(num1, num2);
+            Console.WriteLine("Enter a last number.");
+            int num3 = Convert.ToInt32(Console.ReadLine()); 
+            int multiplication = MultiplyNumbers(sum, num3);
         }
 
         #region SayHi()
@@ -165,7 +174,7 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region
+        #region Arrays()
         /// <summary>
         /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
         /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
@@ -215,7 +224,9 @@ namespace c_sharp_fundamentals
             Console.Write(sentenceChar);
             Console.WriteLine();
         }
+        #endregion
 
+        #region ArraySize()
         //Array with size specified and without size specified
         /// <summary>
         /// Pracitce pre-defined array methods including .Length, Array.Reverse(), and Array.Sort()
@@ -271,6 +282,37 @@ namespace c_sharp_fundamentals
             Console.WriteLine("x");
             Console.WriteLine();
         }
-    }
+
         #endregion
+
+        #region AddNumbers()
+        /// <summary>
+        /// This method takes in two numbers (int) and returns the sum (int) of the two numbers
+        /// </summary>
+        /// <param name="num1">The first number you want to add together</param>
+        /// <param name="num2">The second number you want to add together</param>
+        /// <returns>The sum of the two numbers</returns>
+        static int AddNumbers(int num1, int num2)
+        {
+            int sum = num1 + num2;
+            Console.WriteLine($"The sum of {num1} and {num2} is {sum}");
+            return sum;
+        }
+        #endregion
+
+        #region MultiplyNumbers()
+        /// <summary>
+        /// This method takes in two numbers (int) and returns the multiplication (int) of the two numbers
+        /// </summary>
+        /// <param name="num1">The first number you want to multiply together</param>
+        /// <param name="num2">The second number you want to multiply together</param>
+        /// <returns>The multiplication of the two numbers</returns>
+        static int MultiplyNumbers(int num1, int num2)
+        {
+            int sum = num1 * num2;
+            Console.WriteLine($"The multiplication of {num1} and {num2} is {sum}");
+            return sum;
+        }
+        #endregion
+    }
 }
