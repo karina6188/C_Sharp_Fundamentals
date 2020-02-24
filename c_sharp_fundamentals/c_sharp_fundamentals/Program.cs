@@ -27,7 +27,13 @@ namespace c_sharp_fundamentals
             //ForIteration(number);
             //Arrays();
             //ArraySize();
-            AddNumbers(5, 4);
+            Console.WriteLine("Enter two numbers. One at a time.");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            int sum = AddNumbers(num1, num2);
+            Console.WriteLine("Enter a last number.");
+            int num3 = Convert.ToInt32(Console.ReadLine()); 
+            int multiplication = MultiplyNumbers(sum, num3);
         }
 
         #region SayHi()
@@ -289,6 +295,13 @@ namespace c_sharp_fundamentals
             int sum = num1 + num2;
             Console.WriteLine($"The sum of {num1} and {num2} is {sum}");
             return sum;
+        }
+        #endregion
+
+        #region MultiplyNumbers()
+        static int MultiplyNumbers(int num1, int num2)
+        {
+
         }
         #endregion
     }
