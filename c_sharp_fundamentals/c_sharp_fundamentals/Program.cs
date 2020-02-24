@@ -165,7 +165,7 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region
+        #region Arrays()
         /// <summary>
         /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
         /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
@@ -215,7 +215,9 @@ namespace c_sharp_fundamentals
             Console.Write(sentenceChar);
             Console.WriteLine();
         }
+        #endregion
 
+        #region ArraySize()
         //Array with size specified and without size specified
         /// <summary>
         /// Pracitce pre-defined array methods including .Length, Array.Reverse(), and Array.Sort()
@@ -271,6 +273,14 @@ namespace c_sharp_fundamentals
             Console.WriteLine("x");
             Console.WriteLine();
         }
-    }
+
         #endregion
+
+        #region Method()
+        static void Method(string name)
+        {
+
+        }
+        #endregion
+    }
 }
