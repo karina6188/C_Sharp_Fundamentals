@@ -16,26 +16,26 @@ namespace c_sharp_fundamentals
         {
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
-            Console.WriteLine("Hello!");
-            //SayHi();
+
+            //string name = SayHi();
+
             //Age();
-            //Console.WriteLine("Enter your favorite number between 1 to 100 (an integer)");
-            //// Here we use another built-in method from .NET framework Convert.ToInt32 to convert a string to a integer
-            //// because Console.ReadLine is a string data type, and DataType() method takes only an integer data type
-            //int number = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine(DataType(number));            
+
+            //Console.Write("Enter your birthday MM/DD: ");
+            //Birthday(Console.ReadLine());
+
             //ForIteration(number);
             //Arrays();
             //ArraySize();
-            Console.WriteLine("Enter two numbers. One at a time.");
-            Console.WriteLine("Enter the first number:");
-            int num1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the second number:");
-            int num2 = Convert.ToInt32(Console.ReadLine());
-            int sum = AddNumbers(num1, num2);
-            Console.WriteLine("Enter a last number.");
-            int num3 = Convert.ToInt32(Console.ReadLine()); 
-            int multiplication = MultiplyNumbers(sum, num3);
+            //Console.WriteLine("Enter two numbers. One at a time.");
+            //Console.WriteLine("Enter the first number:");
+            //int num1 = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Enter the second number:");
+            //int num2 = Convert.ToInt32(Console.ReadLine());
+            //int sum = AddNumbers(num1, num2);
+            //Console.WriteLine("Enter a last number.");
+            //int num3 = Convert.ToInt32(Console.ReadLine()); 
+            //int multiplication = MultiplyNumbers(sum, num3);
         }
 
         #region SayHi()
@@ -43,108 +43,123 @@ namespace c_sharp_fundamentals
         /// This method takes in no parameter and returns a boolean
         /// The method takes in the user's response and lowercases the answer. Therefore, whether the user types a Y or y, they can both be processed as a yes
         /// If the user types in Y/y, print to the console "Let's play a game" and invoke the PlayGame() method
-        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and returns false to exit the method
+        /// If the user types in any character other than Y or y, print to the console "Alright. Maybe next time." and exit the method
         /// </summary>
-        static bool SayHi()
+        static string SayHi()
         {
             Console.Write("What is your name? ");
             string name = Console.ReadLine();
-            Console.WriteLine($"It's very nice to meet you {name}!");
-            Console.Write("Would you like to play a game with me? Y/N ");
+            Console.WriteLine($"It's very nice to meet you {name}!\n");
+            Console.Write("Would you like to know your unique number based on your name (Y/N)?  ");
             string game = Console.ReadLine().ToLower();
-            if (game == "y")
-            {
-                Console.WriteLine("Yay! Let's play a game");
-                PlayGame();
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Alright! Maybe next time");
-                return false;
-            }
+            string message = game == "y" ? $"Your name is {name}, therefore your unique number is {UniqueNumber(name)}" : "Alright! Maybe next time.";
+            Console.WriteLine(message);
+            Console.ReadLine();
+            return name;
         }
         #endregion
 
-        #region PlayGame()
+        #region UniqueNumber()
         /// <summary>
-        /// This method takes in no parameter and returns nothing
-        /// The method use if statements to respond to the user with different console messages based on the selection the user makes
+        /// This method takes in a string returns an integer
+        /// The method gets the ASCII numbers of each character in name and add all the numbers together as the unique number
         /// </summary>
-        static void PlayGame()
+        static int UniqueNumber(string name)
         {
-            Console.WriteLine("Pick a number 1, 2, or 3");
-            string number = Console.ReadLine();
-            string message = "";
-            if (number == "1")
+            char[] nameCharacters = name.ToCharArray();
+            int uniqueNumber = 0;
+            foreach (char character in nameCharacters)
             {
-                message = "won a flight ticket to Tokyo, Japan!";
+                uniqueNumber += char.ToUpper(character); // Use char.ToUpper to get each character's ASCII code
             }
-            else if (number == "2")
-            {
-                message = "won a mountain bike!";
-            }
-            else if (number == "3")
-            {
-                message = "won a $50 of gift card!";
-            }
-            else
-            {
-                message = "didn't win a prize because it was not a valid option.";
-            }
-            // This is a replacement code. {0} and {1} are going to be replaced by the two variables number and message
-            Console.WriteLine("You chose {0}, therefore you {1}", number, message);
-            Console.WriteLine();
+            return uniqueNumber;
         }
         #endregion
 
         #region Age()
         /// <summary>
         /// This method takes in no parameter and returns nothing
-        /// Similar to the if statements from the previous method PlayGame()
-        /// This Age() method gives the user different console message based on the user's selection
-        /// In this case, only two options for the user to choose. The condition is either true or false.
-        /// So we use ?: this is called ternary conditional operator to evaluate a boolean expression and returns the result of one of the expressions
+        /// It asks the user to enter his/her age and print to the console how many months and how many days they have lived.
+        /// To prevent the user enters an incorrect data type, use try and catch clause to avoid the program from breaking
         /// </summary>
         static void Age()
         {
-            Console.Write("Are you over 16 years old? Y/N ");
-            string age = Console.ReadLine().ToLower();
-            // This line means if age equals to "y", string bar will be assigned to be the first sentence "You are old enough....". If age does not equal to "y", string bar will be assigned to be the second sentence "You are not..."
-            // ? here means if this condition is true. If yes, give the first result which is before :
-            // If the condition is false, then give the second result which is after :
-            // : means or
-            string drive = (age == "y") ? "You are old enough to drive!" : "You cannot drive at this age.";
-            Console.WriteLine(drive);
+            Console.Write("Enter your age: ");
+            try
+            {
+                int age = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"You have lived {age * 12} months or {age * 365} days!");
+            }
+            catch
+            {
+                Console.WriteLine("You did not enter a valid answer.");
+            };
             Console.ReadLine();
         }
         #endregion
 
-        #region DataType()
+        #region Birthday()
         /// <summary>
-        /// This method takes in an integer number and use a if statement to check if the number is between 1 to 100
-        /// The if statement checks two conditions. If either one of the condition is true, run the code inside the if statement
-        /// If the number is neither less than 1 or greater than 100, run the code inside else statement
-        /// The method returns a string that is to be printed out to the console
+        /// This method takes in a string format of the user's birthday MM/DD
+        /// Concatenate the user's birthday with the current year in a string format
+        /// Convert the complete birthday date to a DateTime data type then deduct today's date to determine how many days are left until the user's next birthday
+        /// The result above is converted and stored as a string. Then use IndexOf() pre-determined method to get the days only from the result
+        /// When the result is 0 days away from the next birthday, the result does not have a . and therefore it will be set to -1 by default but this will crash the program
+        /// To avoid crashing the program, set the index to be 1
+        /// Convert the days in the string data type to an int data type
+        /// Based on how many days to the next birthday, print different message to the console window
+        /// If the birthday has already passed for this year, concatenate the user's birthday with the next year's string
+        /// Calculate how many days are there until the next birthday using the next year's birthday date
+        /// Print the result to the console window
         /// </summary>
-        /// <param name="number">A string to indicate if the user enters an invalid number or the result of the user's lucky number</param>
-        static string DataType(int number)
+        /// <param name="birthday"></param>
+        /// <returns></returns>
+        static bool Birthday(string birthday)
         {
-            // The symbol || here is called a conditional logical OR operator
-            // This evaluates the first condition. If the first condition is true, then it skips the rest operands. If the first condition is false, only then it checks the second operand.
-            if (number < 1 || number > 100)
+            try
             {
-                return "You did not enter an integer from 1 to 100";
+                string thisYear = "/2020";
+                string nextYear = "/2021";
+                string daysUntilNextBirthday = (Convert.ToDateTime(birthday + thisYear) - DateTime.Today).ToString();
+                // When there's more than 0 days until the next birthday, the calculation result would be in this format: {3.00:00:00}
+                // If there's 0 day until the next birthday, the calculation result would be {00:00:00}
+                // Therefore, a default index 1 is set to prevent the program from breaking
+                int index = (daysUntilNextBirthday.IndexOf(".") >= 0) ? daysUntilNextBirthday.IndexOf(".") : 1 ;
+
+                int days = Convert.ToInt32(daysUntilNextBirthday.Substring(0, index));
+                if (days >= 0)
+                {
+                    string message = $"Your next birthday is {daysUntilNextBirthday.Substring(0, index)}";
+                    if (days >= 2)
+                    {
+                        Console.WriteLine(message + " days away.");
+                        return true;
+                    }
+                    if (days > 0)
+                    {
+                        Console.WriteLine(message + " day away.");
+                        return true;
+                    }
+                    if (days == 0)
+                    {
+                        Console.WriteLine($"Your next birthday is today!");
+                        return true;
+                    }
+                }
+                else
+                {
+                    daysUntilNextBirthday = (Convert.ToDateTime(birthday + nextYear) - DateTime.Today).ToString();
+                    int index2 = daysUntilNextBirthday.IndexOf(".");
+                    Console.WriteLine($"Your next birthday is {daysUntilNextBirthday.Substring(0, index2)} days away");
+                    return true;
+                }
+                return false;
             }
-            else
+            catch
             {
-                // The symbol % here is called modulus operator. It means to find the remainder after dividing the first operand by the second
-                // The + symbol here is to add the variable number's value and 5 together. This + symbol is a arithmetic operator
-                int luckyNumber = (number + 11) * 7 % 9;
-                // The + symbol here means to concatenate strings and a variable together. This + is different from the previous + mathematical/arithmetic symbol
-                // Another way to concatenate this is to use string interpolation. It will be written like this: return $"Your lucky number is {number}!";
-                return "Your lucky number is " + luckyNumber + "!";
-            }
+                Console.WriteLine("You did not enter a valid answer.");
+                return false;
+            };
         }
         #endregion
 
@@ -166,7 +181,7 @@ namespace c_sharp_fundamentals
             }
 
             Console.WriteLine("Print out 6 random numbers:");
-            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67};
+            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67 };
             foreach (int numeric in numbers)
             {
                 Console.WriteLine(numeric);
@@ -236,7 +251,7 @@ namespace c_sharp_fundamentals
             int[] array1 = new int[5];
             int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
             int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
-            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva", "Andy", "Lily", "Jason", "Anderson", "Nicole"};
+            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva", "Andy", "Lily", "Jason", "Anderson", "Nicole" };
             // assign array1 index position 0 to be value of integer 1
             array1[0] = 1;
             // assign array1 index position 1 to be value of integer 2
