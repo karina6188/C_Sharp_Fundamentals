@@ -18,10 +18,11 @@ namespace c_sharp_fundamentals
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
 
             //string name = SayHi();
+
             //Age();
 
-            Console.Write("Enter your birthday MM/DD: ");
-            Birthday(Console.ReadLine());
+            //Console.Write("Enter your birthday MM/DD: ");
+            //Birthday(Console.ReadLine());
 
             //ForIteration(number);
             //Arrays();
@@ -98,24 +99,37 @@ namespace c_sharp_fundamentals
         #endregion
 
         #region Birthday()
-
+        /// <summary>
+        /// This method takes in a string format of the user's birthday MM/DD
+        /// Concatenate the user's birthday with the current year in a string format
+        /// Convert the complete birthday date to a DateTime data type then deduct today's date to determine how many days are left until the user's next birthday
+        /// The result above is converted and stored as a string. Then use IndexOf() pre-determined method to get the days only from the result
+        /// When the result is 0 days away from the next birthday, the result does not have a . and therefore it will be set to -1 by default but this will crash the program
+        /// To avoid crashing the program, set the index to be 1
+        /// Convert the days in the string data type to an int data type
+        /// Based on how many days to the next birthday, print different message to the console window
+        /// If the birthday has already passed for this year, concatenate the user's birthday with the next year's string
+        /// Calculate how many days are there until the next birthday using the next year's birthday date
+        /// Print the result to the console window
+        /// </summary>
+        /// <param name="birthday"></param>
+        /// <returns></returns>
         static bool Birthday(string birthday)
         {
             try
             {
-                DateTime today = DateTime.Today;
                 string thisYear = "/2020";
                 string nextYear = "/2021";
-                TimeSpan timeSpan = Convert.ToDateTime(birthday + thisYear) - DateTime.Today;
-                string daysUntilNextBirthday = timeSpan.ToString();
-                int index = daysUntilNextBirthday.IndexOf(".");
-                int modifiedIndex = (index >= 0) ? index : 1 ;
+                string daysUntilNextBirthday = (Convert.ToDateTime(birthday + thisYear) - DateTime.Today).ToString();
+                // When there's more than 0 days until the next birthday, the calculation result would be in this format: {3.00:00:00}
+                // If there's 0 day until the next birthday, the calculation result would be {00:00:00}
+                // Therefore, a default index 1 is set to prevent the program from breaking
+                int index = (daysUntilNextBirthday.IndexOf(".") >= 0) ? daysUntilNextBirthday.IndexOf(".") : 1 ;
 
-                int days = Convert.ToInt32(daysUntilNextBirthday.Substring(0, modifiedIndex));
+                int days = Convert.ToInt32(daysUntilNextBirthday.Substring(0, index));
                 if (days >= 0)
                 {
-                    string message = $"Your next birthday is {daysUntilNextBirthday.Substring(0, modifiedIndex)}";
-
+                    string message = $"Your next birthday is {daysUntilNextBirthday.Substring(0, index)}";
                     if (days >= 2)
                     {
                         Console.WriteLine(message + " days away.");
@@ -134,8 +148,7 @@ namespace c_sharp_fundamentals
                 }
                 else
                 {
-                    timeSpan = Convert.ToDateTime(birthday + nextYear) - DateTime.Today;
-                    daysUntilNextBirthday = timeSpan.ToString();
+                    daysUntilNextBirthday = (Convert.ToDateTime(birthday + nextYear) - DateTime.Today).ToString();
                     int index2 = daysUntilNextBirthday.IndexOf(".");
                     Console.WriteLine($"Your next birthday is {daysUntilNextBirthday.Substring(0, index2)} days away");
                     return true;
