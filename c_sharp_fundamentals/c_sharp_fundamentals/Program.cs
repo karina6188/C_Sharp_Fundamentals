@@ -14,17 +14,18 @@ namespace c_sharp_fundamentals
         static void Main(string[] args)
         // This {} and the codes inside are called a code block
         {
-            // When we call Console here, we are actually calling it from .NET Framework library.
-            // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
-
             //string name = SayHi();
 
             //Age();
 
+            // When we call Console here, we are actually calling it from .NET Framework library.
+            // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
             //Console.Write("Enter your birthday MM/DD: ");
             //Birthday(Console.ReadLine());
 
-            //ForIteration(number);
+
+            //GuessANumber();
+
             //Arrays();
             //ArraySize();
             //Console.WriteLine("Enter two numbers. One at a time.");
@@ -163,28 +164,48 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region ForIteration()
+        #region GuessANumber()
         /// <summary>
-        /// Practice for loop. This method takes in a parameter of a double data type
-        /// Then the for loop iterates for 5 times starting from 0 until it reaches to 4
-        /// Use built-in method Math.Pow to power the number i times
-        /// Each time the for loop iterates, i changes, therefore the number changes to the i-th power
-        /// Print the result to the console
+        /// Practice for loop. This method takes in no parameter and does not return anything
+        /// Use Random class and .Next() method to generate a number between 1 to 10 and store the answer in the answer variable
+        /// Iterate a for loop three times and check if the user's guess matches with the answer
+        /// If yes, print the message to the console and break out from the for loop
+        /// If no, let the user know how many times they have left to guess the right answer
+        /// If the user guess a number that is out of the range of 1 to 10, notify them and let them guess again
+        /// Once the user uses up three chances, break out from the for loop and tell the the correct answer
+        /// If the user enters an invalid character, let them know and terminate the program
         /// </summary>
-        /// <param name="number"></param>
-        static void ForIteration(double number)
+        static void GuessANumber()
         {
-            for (double i = 0; i < 5; i++)
+            Console.WriteLine("Guess a number between 1 to 10. You have 3 chances. ");
+            try
             {
-                double changingNumber = Math.Pow(number, i);
-                Console.WriteLine(changingNumber);
+                Random random = new Random();
+                int answer = random.Next(11);
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.Write("Enter a number: ");
+                    int guess = Convert.ToInt32(Console.ReadLine());
+                    if (guess == answer)
+                    {
+                        Console.WriteLine($"You guess it right!");
+                        break;
+                    }
+                    else if (guess < 1 || guess > 10)
+                    {
+                        Console.WriteLine("Please enter a number between 1 and 10.");
+                        Console.WriteLine($"You have {2 - i} more chance.\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Wrong answer. You have {2-i} more chance.\n");
+                    }
+                }
+                Console.WriteLine($"The correct answer is {answer}.");
             }
-
-            Console.WriteLine("Print out 6 random numbers:");
-            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67 };
-            foreach (int numeric in numbers)
+            catch
             {
-                Console.WriteLine(numeric);
+                Console.WriteLine("You did not enter a valid number.");
             }
         }
         #endregion
