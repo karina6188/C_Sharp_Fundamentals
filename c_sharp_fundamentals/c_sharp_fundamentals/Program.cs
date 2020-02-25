@@ -177,35 +177,40 @@ namespace c_sharp_fundamentals
         /// </summary>
         static void GuessANumber()
         {
-            Console.WriteLine("Guess a number between 1 to 10. You have 3 chances. ");
-            try
+            bool play = true;
+            while (play)
             {
-                Random random = new Random();
-                int answer = random.Next(11);
-                for (int i = 0; i < 3; i++)
+                try
                 {
-                    Console.Write("Enter a number: ");
-                    int guess = Convert.ToInt32(Console.ReadLine());
-                    if (guess == answer)
+                    Console.WriteLine("Guess a number between 1 to 10. You have 3 chances. ");
+                    Random random = new Random();
+                    int answer = random.Next(11);
+                    for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine($"You guess it right!");
-                        break;
+                        Console.Write("Enter a number: ");
+                        int guess = Convert.ToInt32(Console.ReadLine());
+                        if (guess == answer)
+                        {
+                            Console.WriteLine($"\nYou guess it right!");
+                            break;
+                        }
+                        else if (guess < 1 || guess > 10)
+                        {
+                            Console.WriteLine("\nPlease enter a number between 1 and 10.");
+                            Console.WriteLine($"You have {2 - i} more chance.\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\nWrong answer. You have {2 - i} more chance.");
+                        }
                     }
-                    else if (guess < 1 || guess > 10)
-                    {
-                        Console.WriteLine("Please enter a number between 1 and 10.");
-                        Console.WriteLine($"You have {2 - i} more chance.\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Wrong answer. You have {2-i} more chance.\n");
-                    }
+                    Console.WriteLine($"The correct answer is {answer}.");
+                    play = false;
                 }
-                Console.WriteLine($"The correct answer is {answer}.");
-            }
-            catch
-            {
-                Console.WriteLine("You did not enter a valid number.");
+                catch
+                {
+                    Console.WriteLine("You did not enter a valid number.\n");
+                }
             }
         }
         #endregion
@@ -217,14 +222,19 @@ namespace c_sharp_fundamentals
         static void CanYouReadTheSentence()
         {
             Console.WriteLine("Can you reverse one of the sentences below and type out the right sentence?");
-            Console.WriteLine("Example: .saedi ssucsid sdnim taerG");
-            Console.WriteLine("Answer: Great minds discuss ideas.\n");
-            Console.WriteLine("Please reverse:");
-            Console.WriteLine("1) ; deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI");
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("Example: ?ecnetnes siht daer uoy naC");
+            Console.WriteLine("Answer: Can you read this sentence?\n");
+            Console.Write("Please select one of the sentences to reverse: ");
+  
+            string sentence1 = ".elpoep ssucsid sdnim llams ;stneve ssucsid sdnim egareva ;saedi ssucsid sdnim taerG";
+            string sentence2 = "; deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI";
+            string sentence3 = ".seitiliba ruo naht erom raf ,era ylurt ew tahw wohs taht ,seciohc ruo si tI";
 
-            string answer = Console.ReadLine();
+            Console.WriteLine($"1) {sentence1}");
+            Console.WriteLine($"2) {sentence2}");
+            Console.WriteLine($"3) {sentence3}");
+
+            string selection = Console.ReadLine();
             char[] sentenceChar = new char[] { };
             // The logic here is if selection is not "1" and not "2" and not "3", run the code
             // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
@@ -232,20 +242,20 @@ namespace c_sharp_fundamentals
             // You want to run the code only when the selection is not "1" and not "2" and not "3"
             if (selection != "1" && selection != "2" && selection != "3")
             {
-                Console.WriteLine("You did not enter a valid number");
+                Console.WriteLine("You did not enter a valid number.");
             }
             else
             {
                 switch (selection)
                 {
                     case "1":
-                        sentenceChar = sentence2.ToCharArray();
+                        sentenceChar = sentence1.ToCharArray();
                         break;
                     case "2":
                         sentenceChar = sentence2.ToCharArray();
                         break;
                     case "3":
-                        sentenceChar = sentence2.ToCharArray();
+                        sentenceChar = sentence3.ToCharArray();
                         break;
                     default:
                         break;
