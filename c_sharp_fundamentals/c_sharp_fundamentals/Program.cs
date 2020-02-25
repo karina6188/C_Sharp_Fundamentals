@@ -23,10 +23,10 @@ namespace c_sharp_fundamentals
             //Console.Write("Enter your birthday MM/DD: ");
             //Birthday(Console.ReadLine());
 
-
             //GuessANumber();
 
-            //Arrays();
+            CanYouReadTheSentence();
+
             //ArraySize();
             //Console.WriteLine("Enter two numbers. One at a time.");
             //Console.WriteLine("Enter the first number:");
@@ -210,25 +210,21 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region Arrays()
+        #region CanYouReadTheSentence()
         /// <summary>
-        /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
-        /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
-        /// Use switch statement to process the codes based on the user's selection.
-        /// If the user selects either 1, 2, or 3, take the sentence and use built-in method ToCharArray() to convert the string sentence to an array of characters.
-        /// Then store the characters into a char array. Use the built-in method Array.Reverse() to reverse the array.
-        /// Print the characters in the array to the console in the same line to show the reversed sentence.
+        /// 
         /// </summary>
-        static void Arrays()
+        static void CanYouReadTheSentence()
         {
-            Console.WriteLine("Please choose a sentence below to reverse it.");
-            string sentence1 = "Great minds discuss ideas; average minds discuss events; small minds discuss people.";
-            string sentence2 = "It is hard to fail, but it is worse never to have tried to succeed.";
-            string sentence3 = "It is our choices, that show what we truly are, far more than our abilities.";
-            Console.WriteLine($"1) {sentence1}");
-            Console.WriteLine($"2) {sentence2}");
-            Console.WriteLine($"3) {sentence3}");
-            string selection = Console.ReadLine();
+            Console.WriteLine("Can you reverse one of the sentences below and type out the right sentence?");
+            Console.WriteLine("Example: .saedi ssucsid sdnim taerG");
+            Console.WriteLine("Answer: Great minds discuss ideas.\n");
+            Console.WriteLine("Please reverse:");
+            Console.WriteLine("1) ; deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI");
+            Console.WriteLine();
+            Console.WriteLine();
+
+            string answer = Console.ReadLine();
             char[] sentenceChar = new char[] { };
             // The logic here is if selection is not "1" and not "2" and not "3", run the code
             // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
@@ -243,13 +239,13 @@ namespace c_sharp_fundamentals
                 switch (selection)
                 {
                     case "1":
-                        sentenceChar = sentence1.ToCharArray();
+                        sentenceChar = sentence2.ToCharArray();
                         break;
                     case "2":
                         sentenceChar = sentence2.ToCharArray();
                         break;
                     case "3":
-                        sentenceChar = sentence3.ToCharArray();
+                        sentenceChar = sentence2.ToCharArray();
                         break;
                     default:
                         break;
