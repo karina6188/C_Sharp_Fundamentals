@@ -17,12 +17,12 @@ namespace c_sharp_fundamentals
             // When we call Console here, we are actually calling it from .NET Framework library.
             // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
 
-            string name = SayHi();
-            Age();
+            //string name = SayHi();
+            //Age();
 
             Console.Write("Enter your birthday MM/DD: ");
             Birthday(Console.ReadLine());
-            
+
             //ForIteration(number);
             //Arrays();
             //ArraySize();
@@ -51,7 +51,7 @@ namespace c_sharp_fundamentals
             Console.WriteLine($"It's very nice to meet you {name}!\n");
             Console.Write("Would you like to know your unique number based on your name (Y/N)?  ");
             string game = Console.ReadLine().ToLower();
-            string message = game == "y"? $"Your name is {name}, therefore your unique number is {UniqueNumber(name)}":"Alright! Maybe next time.";
+            string message = game == "y" ? $"Your name is {name}, therefore your unique number is {UniqueNumber(name)}" : "Alright! Maybe next time.";
             Console.WriteLine(message);
             Console.ReadLine();
             return name;
@@ -99,15 +99,53 @@ namespace c_sharp_fundamentals
 
         #region Birthday()
 
-        static void Birthday(string birthday)
+        static bool Birthday(string birthday)
         {
             try
             {
-                int birthdayDays = Convert.ToInt32(birthday);
+                DateTime today = DateTime.Today;
+                string thisYear = "/2020";
+                string nextYear = "/2021";
+                TimeSpan timeSpan = Convert.ToDateTime(birthday + thisYear) - DateTime.Today;
+                string daysUntilNextBirthday = timeSpan.ToString();
+                int index = daysUntilNextBirthday.IndexOf(".");
+                int modifiedIndex = (index >= 0) ? index : 1 ;
+
+                int days = Convert.ToInt32(daysUntilNextBirthday.Substring(0, modifiedIndex));
+                if (days >= 0)
+                {
+                    string message = $"Your next birthday is {daysUntilNextBirthday.Substring(0, modifiedIndex)}";
+
+                    if (days >= 2)
+                    {
+                        Console.WriteLine(message + " days away.");
+                        return true;
+                    }
+                    if (days > 0)
+                    {
+                        Console.WriteLine(message + " day away.");
+                        return true;
+                    }
+                    if (days == 0)
+                    {
+                        Console.WriteLine($"Your next birthday is today!");
+                        return true;
+                    }
+                }
+                else
+                {
+                    timeSpan = Convert.ToDateTime(birthday + nextYear) - DateTime.Today;
+                    daysUntilNextBirthday = timeSpan.ToString();
+                    int index2 = daysUntilNextBirthday.IndexOf(".");
+                    Console.WriteLine($"Your next birthday is {daysUntilNextBirthday.Substring(0, index2)} days away");
+                    return true;
+                }
+                return false;
             }
             catch
             {
-
+                Console.WriteLine("You did not enter a valid answer.");
+                return false;
             };
         }
         #endregion
@@ -130,7 +168,7 @@ namespace c_sharp_fundamentals
             }
 
             Console.WriteLine("Print out 6 random numbers:");
-            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67};
+            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67 };
             foreach (int numeric in numbers)
             {
                 Console.WriteLine(numeric);
@@ -200,7 +238,7 @@ namespace c_sharp_fundamentals
             int[] array1 = new int[5];
             int[] array2 = new int[] { 0, 5, 10, 15, 20, 25 };
             int[] array3 = { 13, 11, 9, 7, 5, 3, 1 };
-            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva", "Andy", "Lily", "Jason", "Anderson", "Nicole"};
+            string[] array4 = { "Jeff", "Cindy", "Mark", "Eva", "Andy", "Lily", "Jason", "Anderson", "Nicole" };
             // assign array1 index position 0 to be value of integer 1
             array1[0] = 1;
             // assign array1 index position 1 to be value of integer 2
