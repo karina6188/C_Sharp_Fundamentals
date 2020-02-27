@@ -217,7 +217,15 @@ namespace c_sharp_fundamentals
 
         #region CanYouReadTheSentence()
         /// <summary>
-        /// 
+        /// Print to the console the three sentences for the user to choose which one to revserse
+        /// Store the user's selection. If the user does not select one of the valid options, let them know and restart the game
+        /// Based on the user's selection, convert the sentence to a char array
+        /// Store the user's attempt answer in a char array and reverse the array
+        /// Compare the answer char array to the user's attempt char array character by character
+        /// If find a different character, let the user know that they did not get it right and ask if they want to try again
+        /// If the user wants to try again, break out the for loop and restart the game
+        /// If the user does not want to try again, terminate the program
+        /// If comparing both arrays to the last character and no differences are found, let the user know that they win and do not restart the game again 
         /// </summary>
         static void CanYouReadTheSentence()
         {
