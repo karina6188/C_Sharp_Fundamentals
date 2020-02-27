@@ -221,50 +221,68 @@ namespace c_sharp_fundamentals
         /// </summary>
         static void CanYouReadTheSentence()
         {
-            Console.WriteLine("Can you reverse one of the sentences below and type out the right sentence?");
-            Console.WriteLine("Example: ?ecnetnes siht daer uoy naC");
-            Console.WriteLine("Answer: Can you read this sentence?\n");
-            Console.Write("Please select one of the sentences to reverse: ");
-  
-            string sentence1 = ".elpoep ssucsid sdnim llams ;stneve ssucsid sdnim egareva ;saedi ssucsid sdnim taerG";
-            string sentence2 = "; deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI";
-            string sentence3 = ".seitiliba ruo naht erom raf ,era ylurt ew tahw wohs taht ,seciohc ruo si tI";
-
-            Console.WriteLine($"1) {sentence1}");
-            Console.WriteLine($"2) {sentence2}");
-            Console.WriteLine($"3) {sentence3}");
-
-            string selection = Console.ReadLine();
-            char[] sentenceChar = new char[] { };
-            // The logic here is if selection is not "1" and not "2" and not "3", run the code
-            // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
-            // This does not work because if the user selects "1", it satisfy the two other conditions selection is not "2" or not "3", the code will run
-            // You want to run the code only when the selection is not "1" and not "2" and not "3"
-            if (selection != "1" && selection != "2" && selection != "3")
+            bool play = true;
+            while (play)
             {
-                Console.WriteLine("You did not enter a valid number.");
-            }
-            else
-            {
-                switch (selection)
+                Console.WriteLine("Can you reverse one of the sentences below and type out the right sentence?");
+                Console.WriteLine("Example: ?siht daer uoy naC\nAnswer: Can you read this?\n");
+
+                string sentence1 = ".saedi ssucsid sdnim taerG";
+                string sentence2 = ".deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI";
+                string sentence3 = ".era ylurt ew tahw wohs taht seciohc ruo si tI";
+
+                Console.WriteLine($"1) {sentence1}");
+                Console.WriteLine($"2) {sentence2}");
+                Console.WriteLine($"3) {sentence3}");
+                Console.Write("\nPlease select one of the sentences to reverse: ");
+
+                string selection = Console.ReadLine();
+                char[] answerChar = new char[] {};
+                // The logic here is if selection is not "1" and not "2" and not "3", run the code
+                // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
+                // This does not work because if the user selects "1", it satisfy the two other conditions selection is not "2" or not "3", the code will run
+                // You want to run the code only when the selection is not "1" and not "2" and not "3"
+                if (selection != "1" && selection != "2" && selection != "3")
                 {
-                    case "1":
-                        sentenceChar = sentence1.ToCharArray();
-                        break;
-                    case "2":
-                        sentenceChar = sentence2.ToCharArray();
-                        break;
-                    case "3":
-                        sentenceChar = sentence3.ToCharArray();
-                        break;
-                    default:
-                        break;
+                    Console.WriteLine("You did not enter a valid number.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Please type your answer here: ");
+                    char[] attemptChar = Console.ReadLine().ToCharArray();
+                    switch (selection)
+                    {
+                        case "1":
+                            answerChar = sentence1.ToCharArray();
+                            break;
+                        case "2":
+                            answerChar = sentence2.ToCharArray();
+                            break;
+                        case "3":
+                            answerChar = sentence3.ToCharArray();
+                            break;
+                        default:
+                            break;
+                    }
+                    Array.Reverse(attemptChar);
+                    for (int i = 0; i < attemptChar.Length; i++)
+                    {
+                        if (attemptChar[i] != answerChar[i])
+                        {
+                            Console.Write("You did not get it right.\nWould you like to try again(Y/N)? ");
+                            string tryAgain = Console.ReadLine().ToLower();
+                            Console.WriteLine();
+                            play = (tryAgain == "y") ? true : false;
+                            break;
+                        }
+                        if (i == attemptChar.Length - 1 && attemptChar[attemptChar.Length-1] == answerChar[attemptChar.Length - 1])
+                        {
+                            Console.WriteLine("\nAwesome! You got it right!");
+                            play = false;
+                        }
+                    }
                 }
             }
-            Array.Reverse(sentenceChar);
-            Console.WriteLine("Reversed sentence:");
-            Console.Write(sentenceChar);
-            Console.WriteLine();
         }
         #endregion
 
