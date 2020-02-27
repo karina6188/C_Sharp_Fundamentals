@@ -14,24 +14,32 @@ namespace c_sharp_fundamentals
         static void Main(string[] args)
         // This {} and the codes inside are called a code block
         {
-            // When we call Console here, we are actually calling it from .NET Framework library.
-            // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
-
             //string name = SayHi();
 
             //Age();
 
+            // When we call Console here, we are actually calling it from .NET Framework library.
+            // The dot after it is called a member accesser to allow us to access a member of the class. WriteLine is a member of the Console class.
             //Console.Write("Enter your birthday MM/DD: ");
             //Birthday(Console.ReadLine());
 
-            //ForIteration(number);
-            //Arrays();
+            //GuessANumber();
+
+            //CanYouReadTheSentence();
+
+
+
+
+
+
             //ArraySize();
+
             //Console.WriteLine("Enter two numbers. One at a time.");
             //Console.WriteLine("Enter the first number:");
             //int num1 = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine("Enter the second number:");
             //int num2 = Convert.ToInt32(Console.ReadLine());
+
             //int sum = AddNumbers(num1, num2);
             //Console.WriteLine("Enter a last number.");
             //int num3 = Convert.ToInt32(Console.ReadLine()); 
@@ -163,81 +171,133 @@ namespace c_sharp_fundamentals
         }
         #endregion
 
-        #region ForIteration()
+        #region GuessANumber()
         /// <summary>
-        /// Practice for loop. This method takes in a parameter of a double data type
-        /// Then the for loop iterates for 5 times starting from 0 until it reaches to 4
-        /// Use built-in method Math.Pow to power the number i times
-        /// Each time the for loop iterates, i changes, therefore the number changes to the i-th power
-        /// Print the result to the console
+        /// Practice for loop. This method takes in no parameter and does not return anything
+        /// Use Random class and .Next() method to generate a number between 1 to 10 and store the answer in the answer variable
+        /// Iterate a for loop three times and check if the user's guess matches with the answer
+        /// If yes, print the message to the console and break out from the for loop
+        /// If no, let the user know how many times they have left to guess the right answer
+        /// If the user guess a number that is out of the range of 1 to 10, notify them and let them guess again
+        /// Once the user uses up three chances, break out from the for loop and tell the the correct answer
+        /// If the user enters an invalid character, let them know and terminate the program
         /// </summary>
-        /// <param name="number"></param>
-        static void ForIteration(double number)
+        static void GuessANumber()
         {
-            for (double i = 0; i < 5; i++)
+            bool play = true;
+            while (play)
             {
-                double changingNumber = Math.Pow(number, i);
-                Console.WriteLine(changingNumber);
-            }
-
-            Console.WriteLine("Print out 6 random numbers:");
-            int[] numbers = new int[] { 52, 87, 6, 23, 19, 67 };
-            foreach (int numeric in numbers)
-            {
-                Console.WriteLine(numeric);
+                try
+                {
+                    Console.WriteLine("Guess a number between 1 to 10. You have 3 chances. ");
+                    Random random = new Random();
+                    int answer = random.Next(11);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Console.Write("Enter a number: ");
+                        int guess = Convert.ToInt32(Console.ReadLine());
+                        if (guess == answer)
+                        {
+                            Console.WriteLine($"\nYou guess it right!");
+                            break;
+                        }
+                        else if (guess < 1 || guess > 10)
+                        {
+                            Console.WriteLine("\nPlease enter a number between 1 and 10.");
+                            Console.WriteLine($"You have {2 - i} more chance.\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\nWrong answer. You have {2 - i} more chance.");
+                        }
+                    }
+                    Console.WriteLine($"The correct answer is {answer}.");
+                    play = false;
+                }
+                catch
+                {
+                    Console.WriteLine("You did not enter a valid number.\n");
+                }
             }
         }
         #endregion
 
-        #region Arrays()
+        #region CanYouReadTheSentence()
         /// <summary>
-        /// This method gives the user 3 sentences to choose from. The user's selection is stored in a variable.
-        /// If the selection is neither 1, 2, or 3, print to the console that the user did not enter a valid number.
-        /// Use switch statement to process the codes based on the user's selection.
-        /// If the user selects either 1, 2, or 3, take the sentence and use built-in method ToCharArray() to convert the string sentence to an array of characters.
-        /// Then store the characters into a char array. Use the built-in method Array.Reverse() to reverse the array.
-        /// Print the characters in the array to the console in the same line to show the reversed sentence.
+        /// Print to the console the three sentences for the user to choose which one to revserse
+        /// Store the user's selection. If the user does not select one of the valid options, let them know and restart the game
+        /// Based on the user's selection, convert the sentence to a char array
+        /// Store the user's attempt answer in a char array and reverse the array
+        /// Compare the answer char array to the user's attempt char array character by character
+        /// If find a different character, let the user know that they did not get it right and ask if they want to try again
+        /// If the user wants to try again, break out the for loop and restart the game
+        /// If the user does not want to try again, terminate the program
+        /// If comparing both arrays to the last character and no differences are found, let the user know that they win and do not restart the game again 
         /// </summary>
-        static void Arrays()
+        static void CanYouReadTheSentence()
         {
-            Console.WriteLine("Please choose a sentence below to reverse it.");
-            string sentence1 = "Great minds discuss ideas; average minds discuss events; small minds discuss people.";
-            string sentence2 = "It is hard to fail, but it is worse never to have tried to succeed.";
-            string sentence3 = "It is our choices, that show what we truly are, far more than our abilities.";
-            Console.WriteLine($"1) {sentence1}");
-            Console.WriteLine($"2) {sentence2}");
-            Console.WriteLine($"3) {sentence3}");
-            string selection = Console.ReadLine();
-            char[] sentenceChar = new char[] { };
-            // The logic here is if selection is not "1" and not "2" and not "3", run the code
-            // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
-            // This does not work because if the user selects "1", it satisfy the two other conditions selection is not "2" or not "3", the code will run
-            // You want to run the code only when the selection is not "1" and not "2" and not "3"
-            if (selection != "1" && selection != "2" && selection != "3")
+            bool play = true;
+            while (play)
             {
-                Console.WriteLine("You did not enter a valid number");
-            }
-            else
-            {
-                switch (selection)
+                Console.WriteLine("Can you reverse one of the sentences below and type out the right sentence?");
+                Console.WriteLine("Example: ?siht daer uoy naC\nAnswer: Can you read this?\n");
+
+                string sentence1 = ".saedi ssucsid sdnim taerG";
+                string sentence2 = ".deeccus ot deirt evah ot reven esrow si ti tub ,liaf ot drah si tI";
+                string sentence3 = ".era ylurt ew tahw wohs taht seciohc ruo si tI";
+
+                Console.WriteLine($"1) {sentence1}");
+                Console.WriteLine($"2) {sentence2}");
+                Console.WriteLine($"3) {sentence3}");
+                Console.Write("\nPlease select one of the sentences to reverse: ");
+
+                string selection = Console.ReadLine();
+                char[] answerChar = new char[] {};
+                // The logic here is if selection is not "1" and not "2" and not "3", run the code
+                // Conditional logical operator || cannot be used here because if selection is not "1" or not "2" or not "3", run the code
+                // This does not work because if the user selects "1", it satisfy the two other conditions selection is not "2" or not "3", the code will run
+                // You want to run the code only when the selection is not "1" and not "2" and not "3"
+                if (selection != "1" && selection != "2" && selection != "3")
                 {
-                    case "1":
-                        sentenceChar = sentence1.ToCharArray();
-                        break;
-                    case "2":
-                        sentenceChar = sentence2.ToCharArray();
-                        break;
-                    case "3":
-                        sentenceChar = sentence3.ToCharArray();
-                        break;
-                    default:
-                        break;
+                    Console.WriteLine("You did not enter a valid number.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Please type your answer here: ");
+                    char[] attemptChar = Console.ReadLine().ToCharArray();
+                    switch (selection)
+                    {
+                        case "1":
+                            answerChar = sentence1.ToCharArray();
+                            break;
+                        case "2":
+                            answerChar = sentence2.ToCharArray();
+                            break;
+                        case "3":
+                            answerChar = sentence3.ToCharArray();
+                            break;
+                        default:
+                            break;
+                    }
+                    Array.Reverse(attemptChar);
+                    for (int i = 0; i < attemptChar.Length; i++)
+                    {
+                        if (attemptChar[i] != answerChar[i])
+                        {
+                            Console.Write("You did not get it right.\nWould you like to try again(Y/N)? ");
+                            string tryAgain = Console.ReadLine().ToLower();
+                            Console.WriteLine();
+                            play = (tryAgain == "y") ? true : false;
+                            break;
+                        }
+                        if (i == attemptChar.Length - 1 && attemptChar[attemptChar.Length-1] == answerChar[attemptChar.Length - 1])
+                        {
+                            Console.WriteLine("\nAwesome! You got it right!");
+                            play = false;
+                        }
+                    }
                 }
             }
-            Array.Reverse(sentenceChar);
-            Console.WriteLine("Reversed sentence:");
-            Console.Write(sentenceChar);
-            Console.WriteLine();
         }
         #endregion
 
